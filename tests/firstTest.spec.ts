@@ -41,5 +41,12 @@ test.describe('Home', async () => {
         await expect(headingText).toBeVisible();
     });
 
+    test('Verify home link is enable using text and css selector', async ({page}) => {
+        // click the button
+        const homeText = await page.locator("#primary-menu text=Home");
+
+        // verify heading text is visible
+        await expect(homeText).toBeVisible();
+    });
 
 });
