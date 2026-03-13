@@ -43,10 +43,27 @@ test.describe('Home', async () => {
 
     test('Verify home link is enable using text and css selector', async ({page}) => {
         // click the button
-        const homeText = await page.locator("#primary-menu text=Home");
-
+        const homeText = await page.locator("#zak-primary-menu >> text=Home");
         // verify heading text is visible
         await expect(homeText).toBeVisible();
+    });
+
+    test('Verify search Icon is visible using xpath selector', async ({page}) => {
+        // click the button
+        const searchIcon = page.locator("//div[contains(@class, 'zak-header-actions--desktop')]//a[contains(@class, 'zak-header-search__toggle')]");
+        // verify heading text is visible
+        await expect(searchIcon).toBeVisible();
+    });
+
+    test('Verify text of all nav link', async ({page}) => {
+
+        const expectedNavLinks = ['Home', 'About', 'Shop', 'Blog', 'Contact', 'My account'];
+
+        // click the button
+        const navLinks = page.locator("#zak-primary-menu li[id*=menu-item]");
+
+        // verify heading text is visible
+        expect(await navLinks.allTextContents()).toEqual(expectedNavLinks);
     });
 
 });
