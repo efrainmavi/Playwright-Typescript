@@ -14,7 +14,10 @@ test.afterEach(async ({page}) => {
 test.describe('Contact', async () => {
     test('Fill contact formi and verify success message', async ({page}) => {
         // fill the form
-        await page.locator("//div[contains(@class, 'contact-message')]//textarea").fill('This is a test message');
+        await page.locator('.contact-name input').fill('John Doe');
+        await page.locator('.contact-email input').fill('test@mail.com');
+        await page.locator('.contact-phone input').fill('134567864');
+        await page.locator('.contact-message textarea').fill('This is a test message');
 
         //clcik submit button
         const submitButton = page.getByRole('button', {name: 'Submit'});
@@ -22,6 +25,8 @@ test.describe('Contact', async () => {
 
         // verify success message
 
+        const successAlert =  page.locator('.everest-forms-notice');
+        expect(await successAlert.textContent()).toContain('Thanks for contacting us! We will be in touch with you shortly');
     });
 
 });
