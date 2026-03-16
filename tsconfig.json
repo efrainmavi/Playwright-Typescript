@@ -5,9 +5,11 @@
     "lib": ["ES2020", "DOM"],
     "moduleResolution": "nodenext",
     "types": ["@playwright/test", "node"],
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false, // Deshabilitar las comprobaciones estrictas
+    "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
