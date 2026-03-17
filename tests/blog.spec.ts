@@ -1,8 +1,10 @@
 import { expect, test } from "@playwright/test";
+import BlogPage from "../pages/blog.page.ts";
 
 test.beforeEach(async ({ page }) => {
+  const blogPage = new BlogPage(page);
   // open url
-  await page.goto("https://practice.sdetunicorns.com/blog/");
+  await blogPage.navigateTo("https://practice.sdetunicorns.com/blog/");
 });
 
 test.afterEach(async ({ page }) => {
@@ -12,9 +14,11 @@ test.afterEach(async ({ page }) => {
 });
 
 test.describe("Blog", () => {
+  let blogPage: BlogPage;
   test("Verify Recent Posts count and verify the length of each list item", async ({ page }) => {
+    blogPage = new BlogPage(page);
     // get the recent post list elements
-    const recentPostList = page.locator("#recent-posts-3 ul li");
+    const recentPostList = blogPage.recentPostList;
 
     //loop through the list and assert the char length > 10
     for (const element of await recentPostList.elementHandles()) {

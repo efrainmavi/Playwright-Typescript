@@ -1,8 +1,10 @@
 import {test, expect} from '@playwright/test';
+import ContactPage from '../pages/contact.page.ts';
 
 test.beforeEach(async ({page}) => {
+    const contactPage = new ContactPage(page);
     // open url
-    await page.goto('https://practice.sdetunicorns.com/contact/');
+    await contactPage.navigateTo('https://practice.sdetunicorns.com/contact/');
 });
 
 test.afterEach(async ({page}) => {
@@ -12,20 +14,23 @@ test.afterEach(async ({page}) => {
 });
 
 test.describe('Contact', async () => {
+    let contactPage: ContactPage;
+
     test('Fill contact formi and verify success message', async ({page}) => {
+        contactPage = new ContactPage(page);
         // fill the form
-        await page.locator('.contact-name input').fill('John Doe');
-        await page.locator('.contact-email input').fill('test@mail.com');
-        await page.locator('.contact-phone input').fill('134567864');
-        await page.locator('.contact-message textarea').fill('This is a test message');
+        await contactPage.enterName('John Doe');
+        await contactPage.enterEmail('test@mail.com');
+        await contactPage.enterPhone('134567864');
+        await contactPage.enterMessage('This is a test message');
 
         //clcik submit button
-        const submitButton = page.getByRole('button', {name: 'Submit'});
+        const submitButton = contactPage.submitBtn;
         await submitButton.click();
 
         // verify success message
 
-        const successAlert =  page.locator('.everest-forms-notice');
+        const successAlert =  contactPage.successAlert;
         expect(await successAlert.textContent()).toContain('Thanks for contacting us! We will be in touch with you shortly');
     });
 
