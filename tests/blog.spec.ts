@@ -4,7 +4,7 @@ import BlogPage from "../pages/blog.page.ts";
 test.beforeEach(async ({ page }) => {
   const blogPage = new BlogPage(page);
   // open url
-  await blogPage.navigateTo("https://practice.sdetunicorns.com/blog/");
+  await blogPage.navigateTo("blog/");
 });
 
 test.afterEach(async ({ page }) => {

@@ -24,20 +24,11 @@ export default class ContactPage {
         await this.page.goto(url);
     }
 
-    async enterName(name: string){
+    async submitForm(name: string, email: string, phone: string, message: string){
         await this.nameInput.fill(name);
-    }
-
-    async enterEmail(email: string){
         await this.emailInput.fill(email);
-    }
-
-    async enterPhone(phone: string){
         await this.phoneInput.fill(phone);
-    }
-
-    async enterMessage(message: string){
         await this.messageInput.fill(message);
+        await this.submitBtn.click();
     }
-
 }

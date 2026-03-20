@@ -5,7 +5,7 @@ test.beforeEach(async ({page}) => {
     const navigateHomePage = new HomePage(page);
     // open url
     //await page.goto('https://practice.sdetunicorns.com/');
-    await navigateHomePage.navigateTo('https://practice.sdetunicorns.com/');
+    await navigateHomePage.navigateTo('/');
 });
 
 test.afterEach(async ({page}) => {
