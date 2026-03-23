@@ -14,13 +14,13 @@ test.afterEach(async ({ page }) => {
 
 test.describe('My Account', () => {
 
-    test('Login', async ({page}) => {
+    /*test('Login', async ({page}) => {
         await page.locator('#username').fill('practiceuser1');
         await page.locator('#password').fill('PracticePass1!');
         await page.locator('[value="Log in"]').click();
 
         await expect(page.locator("//a[text()='Log out']")).toBeVisible();
-    });
+    });*/
 
     test('Access Orders', async ({page}) => {
         await page.locator(`li a[href*='orders']`).click();
@@ -28,7 +28,7 @@ test.describe('My Account', () => {
     });
 
     test('Access Downloads', async ({page})=> {
-        await page.locator(`li a[*='downloads']`).click();
+        await page.locator(`li a[href*='downloads']`).click();
         await expect(page).toHaveURL(/.*downloads/);
     });
 });
