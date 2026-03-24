@@ -14,7 +14,7 @@ test.afterEach(async ({page}) => {
     await page.context().close();
 });
 
-test.describe('Contact', async () => {
+test.describe ('Contact', async () => {
     let contactPage: ContactPage;
 
     test('Fill contact formi and verify success message', async ({page}) => {
