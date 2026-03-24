@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","3036","Verify Recent Posts count and verify the length of each list item","firefox","2026-03-23","passed","2026-03-23","Blog","blog.spec.ts","",""
+"","2488","Verify Recent Posts count and verify the length of each list item","chromium","2026-03-23","passed","2026-03-23","Blog","blog.spec.ts","",""
+"","2446","Verify Recent Posts count and verify the length of each list item","webkit","2026-03-23","passed","2026-03-23","Blog","blog.spec.ts","",""
