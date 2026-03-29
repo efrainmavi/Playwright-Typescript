@@ -6,7 +6,8 @@
   "scripts": {
     "test:parallel": "npx playwright test tests",
     "test:report": "npx playwright show-report",
-    "cross:browser": "npx playwright test"
+    "cross:browser": "npx playwright test",
+    "test:api": "npx playwright test tests/contact.api.spec.ts"
   },
   "keywords": [],
   "author": "",
