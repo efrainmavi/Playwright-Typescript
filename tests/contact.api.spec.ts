@@ -2,6 +2,7 @@ import {test, expect, APIRequestContext, APIResponse} from '@playwright/test';
 import ContactPage from '../pages/contact.page.ts';
 import { faker } from '@faker-js/faker';
 import Person from '../utils/response.types.ts';
+import ApiController from '../controller/api.controller.ts';
 
 
 test.beforeEach(async ({page}) => {
@@ -18,19 +19,23 @@ test.afterEach(async ({page}) => {
 
 test.describe ('Contact', async () => {
     let contactPage: ContactPage;
-    let fakerApi: APIRequestContext;
     let person: Person;
 
     test.beforeAll(async ({playwright}) => {
-        fakerApi = await playwright.request.newContext({
+        /*fakerApi = await playwright.request.newContext({
             baseURL: 'https://jsonplaceholder.typicode.com'
-        });
+        });*/
+        await ApiController.requestContextInitialize();
+        person = await ApiController.getUsers();
 
-        const response = await fakerApi.get('/users');
+        const newUserTodo = await ApiController.createTodo();
+        console.log(newUserTodo);
+
+        /*const response = await fakerApi.get('/users');
         const responseBody = await response.json();
-        person = responseBody[0];
+        person = responseBody[0];*/
 
-        const postResponse = await fakerApi.post('/users/1/todos', {
+        /*const postResponse = await fakerApi.post('/users/1/todos', {
             data: {
                 title: 'test todo learn playwright',
                 completed: false
@@ -38,7 +43,7 @@ test.describe ('Contact', async () => {
         });
 
         const postResBody = await postResponse.json();
-        console.log(postResBody);
+        console.log(postResBody);*/
     });
 
     test('Fill contact form and verify success message', async ({page}) => {
